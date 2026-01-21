@@ -37,6 +37,8 @@ teslimatına kadar tüm teknik servis süreçlerini yönetmenizi sağlar.
         'views/definitions/servis_urun_views.xml',
         'views/definitions/servis_tanim_views.xml',
         'views/definitions/aksesuar_views.xml',
+        'views/definitions/deger_okuma_tanim_views.xml',
+        'views/definitions/marka_raporlama_tanim_views.xml',
 
         # 4. VIEWS - MISC
         'views/misc/urun_popups.xml',

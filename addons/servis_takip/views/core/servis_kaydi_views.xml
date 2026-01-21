@@ -279,6 +279,28 @@
                         </field>
                     </page>
 
+                    <page string="Değer Okuma" name="deger_okuma">
+                        <field name="deger_okuma_ids" readonly="formu_duzenle == False and state in ['teslim_edildi', 'iptal']" nolabel="1">
+                            <list string="Değer Okuma" editable="bottom" class="o_list_compact">
+                                <field name="deger_okuma_tanimi_id" string="Değer Okuma" options="{'no_create_edit': False, 'no_create': False}" required="1" width="30%"/>
+                                <field name="aciklama" string="Açıklama" width="50%"/>
+                                <field name="tarih" readonly="1" width="10%"/>
+                                <field name="personel_id" readonly="1" widget="many2one_avatar_user" width="10%"/>
+                            </list>
+                        </field>
+                    </page>
+
+                    <page string="Marka Raporlama" name="marka_raporlama">
+                        <field name="marka_raporlama_ids" readonly="formu_duzenle == False and state in ['teslim_edildi', 'iptal']" nolabel="1">
+                            <list string="Marka Raporlama" editable="bottom" class="o_list_compact">
+                                <field name="marka_raporlama_tanimi_id" string="Marka Raporlama" options="{'no_create_edit': False, 'no_create': False}" required="1" width="30%"/>
+                                <field name="aciklama" string="Açıklama" width="50%"/>
+                                <field name="tarih" readonly="1" width="10%"/>
+                                <field name="personel_id" readonly="1" widget="many2one_avatar_user" width="10%"/>
+                            </list>
+                        </field>
+                    </page>
+
                     <page string="Notlar" name="notlar">
                         <field name="notlar_ids" context="{'default_servis_kaydi_id': id, 'form_view_ref': 'modul_teknik_servis.view_servis_kaydi_notlar_popup_form'}" options="{'no_create_edit': True}" readonly="formu_duzenle == False and state in ['teslim_edildi', 'iptal']">
                             <list string="Notlar">

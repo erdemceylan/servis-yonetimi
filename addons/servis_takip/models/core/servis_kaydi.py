@@ -74,6 +74,8 @@ class ServisKaydi(models.Model):
     teknik_rapor_satirlari = fields.One2many('servis.kaydi.teknik.rapor.satir', 'servis_kaydi_id', string="Parça ve Hizmetler", copy=True)
     notlar_ids = fields.One2many('servis.kaydi.notlar', 'servis_kaydi_id', string='Notlar', copy=True)
     aksesuar_ids = fields.One2many('servis.kaydi.aksesuar', 'servis_kaydi_id', string='Aksesuarlar', copy=True)
+    deger_okuma_ids = fields.One2many('servis.kaydi.deger.okuma', 'servis_kaydi_id', string='Değer Okuma', copy=True)
+    marka_raporlama_ids = fields.One2many('servis.kaydi.marka.raporlama', 'servis_kaydi_id', string='Marka Raporlama', copy=True)
     dokuman_yukle_ids = fields.One2many('servis.kaydi.dokuman', 'servis_kaydi_id', string='Dokümanlar', copy=True)
     teknisyen_notu = fields.Text(string='Teknisyen Notu', help='Teknisyen tarafından yapılan işlemler ve notlar')
     rapor_parca_hizmet_ekle = fields.Boolean(string='Parça ve Hizmetleri Rapora Ekle', default=True, help='İşaretlenirse raporda parça ve hizmetler gösterilir')

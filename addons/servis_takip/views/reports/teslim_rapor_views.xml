@@ -42,6 +42,16 @@
                             </group>
                             <div class="oe_clear"/>
                         </page>
+                        <page string="Değer Okuma">
+                            <field name="deger_okuma_ids">
+                                <list editable="bottom">
+                                    <field name="deger_okuma_tanimi_id"/>
+                                    <field name="aciklama"/>
+                                    <field name="tarih"/>
+                                    <field name="personel_id"/>
+                                </list>
+                            </field>
+                        </page>
                     </notebook>
                     <group string="Onay">
                         <field name="musteri_imzasi" widget="signature" string="Müşteri İmzası"/>
@@ -121,26 +131,51 @@
                             </div>
                         </div>
 
-                        <div class="mt-4" t-if="o.ariza_detay_ids">
-                            <h4 style="font-size: 14px; font-weight: bold; color: #333;">MÜŞTERI ŞİKAYETLERİ</h4>
-                            <table class="table table-sm table-bordered">
-                                <thead style="background-color: #f8f9fa;">
-                                    <tr>
-                                        <th style="width: 30%;">Arıza Tipi</th>
-                                        <th style="width: 50%;">Müşteri Notu</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr t-foreach="o.ariza_detay_ids" t-as="detay">
-                                        <td>
-                                            <span t-field="detay.ariza_tanimi_id"/>
-                                        </td>
-                                        <td>
-                                            <span t-field="detay.musteri_notu"/>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="mt-4" t-if="o.ariza_detay_ids or o.deger_okuma_ids">
+                            <div class="row">
+                                <div class="col-6" t-if="o.ariza_detay_ids" style="padding-right: 20px;">
+                                    <h4 style="font-size: 13px; font-weight: bold; color: #333;">MÜŞTERI ŞİKAYETLERİ</h4>
+                                    <table class="table table-sm table-bordered" style="font-size: 12px;">
+                                        <thead style="background-color: #f8f9fa;">
+                                            <tr>
+                                                <th style="width: 40%;">Arıza Tipi</th>
+                                                <th style="width: 60%;">Müşteri Notu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.ariza_detay_ids" t-as="detay">
+                                                <td>
+                                                    <span t-field="detay.ariza_tanimi_id"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="detay.musteri_notu"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-6" t-if="o.deger_okuma_ids" style="padding-left: 20px;">
+                                    <h4 style="font-size: 13px; font-weight: bold; color: #333;">DEĞER OKUMA VERİLERİ</h4>
+                                    <table class="table table-sm table-bordered" style="font-size: 12px;">
+                                        <thead style="background-color: #f8f9fa;">
+                                            <tr>
+                                                <th style="width: 35%;">Değer Okuma Tipi</th>
+                                                <th style="width: 65%;">Açıklama</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.deger_okuma_ids" t-as="deger_okuma">
+                                                <td>
+                                                    <span t-field="deger_okuma.deger_okuma_tanimi_id.name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="deger_okuma.aciklama"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mt-4" t-if="o.servis_islem_satirlari">

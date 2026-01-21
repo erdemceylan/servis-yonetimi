@@ -45,6 +45,9 @@ class TeslimRapor(models.Model):
     
     # Servis işlem satırları
     servis_islem_satirlari = fields.One2many('teslim.rapor.islem', 'rapor_id', string='Servis İşlem Satırları')
+    
+    # Değer okuma satırları
+    deger_okuma_ids = fields.One2many('teslim.rapor.deger.okuma', 'rapor_id', string='Değer Okuma Verileri')
 
     @api.depends('company_id')
     def _compute_company_currency_id(self):
@@ -96,5 +99,16 @@ class TeslimRaporIslem(models.Model):
     rapor_id = fields.Many2one('teslim.rapor', string='Teslim Rapor', ondelete='cascade')
     islem_aciklama = fields.Text(string='İşlem Açıklaması')
     islem_tarihi = fields.Date(string='İşlem Tarihi')
+
+
+class TeslimRaporDegerOkuma(models.Model):
+    _name = 'teslim.rapor.deger.okuma'
+    _description = 'Teslim Rapor Değer Okuma Verileri'
+
+    rapor_id = fields.Many2one('teslim.rapor', string='Teslim Rapor', ondelete='cascade')
+    deger_okuma_tanimi_id = fields.Many2one('deger.okuma.tanimi', string='Değer Okuma', required=True)
+    aciklama = fields.Text(string='Açıklama')
+    tarih = fields.Datetime(string='Tarih', default=lambda self: fields.Datetime.now())
+    personel_id = fields.Many2one('hr.employee', string='İlgili Personel')
 
 
