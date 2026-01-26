@@ -39,6 +39,9 @@ teslimatına kadar tüm teknik servis süreçlerini yönetmenizi sağlar.
         'views/definitions/aksesuar_views.xml',
         'views/definitions/deger_okuma_tanim_views.xml',
 
+        # 3.5. VIEWS - PRODUCT EXTENSIONS (Dövizli Fiyat)
+        'views/product_extensions_views.xml',
+
         # 4. VIEWS - MISC
         'views/misc/urun_popups.xml',
         'views/misc/servis_popups.xml',
